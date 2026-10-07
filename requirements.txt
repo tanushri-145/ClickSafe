@@ -1,5 +1,4 @@
 Flask
 transformers
-torch
 safetensors
 huggingface_hub
