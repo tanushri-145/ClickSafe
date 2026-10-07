@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Click Safe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+  <div class="page">
+    <header class="top">ClickSafe</header>
+
+    <main>
+      <h1>Paste a link before you click it.</h1>
+      <p class="lede">
+        A language model reads the URL and estimates how likely it is to be phishing.
+        It never opens the page.
+      </p>
+
+      <form id="urlForm" novalidate>
+        <label for="url" class="sr">URL to check</label>
+        <input id="url" type="text" inputmode="url" autocomplete="off" autocapitalize="off" spellcheck="false"
+          placeholder="https://paypa1-login.example.com/verify" required>
+        <button type="submit" id="submit">Check link</button>
+      </form>
+
+      <section id="result" class="result" data-state="idle" hidden aria-live="polite">
+        <p class="anatomy" id="anatomy"></p>
+        <h2 id="prediction"></h2>
+        <p id="confidence"></p>
+        <div class="meter" aria-hidden="true"><span id="meterFill"></span></div>
+      </section>
+
+      <section id="historyWrap" class="history" hidden>
+        <h3>Checked this session</h3>
+        <ul id="history"></ul>
+      </section>
+    </main>
+
+    <footer>
+      This is an estimate from the URL text alone, so it can be wrong. Links to profiles,
+      shortened links and brand-new domains are the cases it handles worst.
+    </footer>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
